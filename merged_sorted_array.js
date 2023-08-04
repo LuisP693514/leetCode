@@ -61,7 +61,7 @@ const merge = function (nums1, m, nums2, n) {
         for (let j = 0; j < nums1.length; j++) {
             const element2 = nums1[j];
             if (element1 < element2) {
-                nums1.splice(j - 1, 0, element1);
+                nums1.splice(j, 0, element1);
                 nums1.splice(-1);
                 break;
             } else if (j >= m && element2 === 0) {
@@ -73,6 +73,6 @@ const merge = function (nums1, m, nums2, n) {
     }
 };
 
-const nums1 = [0], m = 0, nums2 = [1], n = 1;
+const nums1 = [-1, 3, 0, 0, 0, 0, 0], m = 2, nums2 = [0, 0, 1, 2, 3], n = 5;
 merge(nums1, m, nums2, n);
 console.log(nums1);

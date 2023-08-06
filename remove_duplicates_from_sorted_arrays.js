@@ -52,4 +52,5 @@ nums is sorted in non-decreasing order.
  */
 const removeDuplicates = function(nums) {
     //test push (for git auth)
+    //test 2
 };

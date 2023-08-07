@@ -50,7 +50,30 @@ nums is sorted in non-decreasing order.
  * @param {number[]} nums
  * @return {number}
  */
-const removeDuplicates = function(nums) {
-    //test push (for git auth)
-    //test 2
+const removeDuplicates = function (nums) {
+    let currentNumber = undefined;
+    let count = 0;
+    for (let i = 0; i < nums.length; i++) {
+        const element = nums[i];
+
+        if (currentNumber === undefined) {
+            currentNumber = element;
+            continue;
+        } else if (currentNumber === element) {
+            nums.splice(i, 1);
+            nums.unshift("_");
+            count += 1;
+        } else if (currentNumber !== element) {
+            currentNumber = element;
+        }
+    }
+    for (let i = 0; i < count; i++) {
+        nums.shift();
+    }
+    return nums.length;
 };
+
+// const nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+nums = [1,1,2]
+console.log(removeDuplicates(nums));
+console.log(nums);

@@ -57,24 +57,26 @@ nums is sorted in non-decreasing order.
 const removeDuplicates = function(nums) {
     
     let i = 0;
-    let prev = undefined;
-    let currentNumber = nums[0];
+    let last;
+    let previous;
     let count = 0;
 
     while (i < nums.length) {
+
+        // assign the current number
         //remove duplicate starting at 3rd occurance
-        if (currentNumber === prev && currentNumber === nums[i]) {
+        if (previous === last && previous === nums[i]) {
             nums.splice(i, 1);
             nums.unshift('-');
             count += 1;
-        } else if (currentNumber === prev && currentNumber !== nums[i]) {
-            currentNumber = nums[i];
-        } else if (currentNumber !== prev) {
-            prev = currentNumber;
-            currentNumber = nums[i];
         }
-            
-        i++
+           
+        //update the prev number with the current one
+        //update the current number with the current one
+
+        last = previous;
+        previous = nums[i];
+        i++;
     }
 
     for (let i = 0; i < count; i++) {
@@ -86,7 +88,7 @@ const removeDuplicates = function(nums) {
 };
 
 
-const nums = [1, 1, 1, 2, 2, 3];
+const nums = [1, 1, 1, 2,2, 2,2,2,2, 3];
 console.log(removeDuplicates(nums));
 console.log(nums);
 

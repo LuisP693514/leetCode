@@ -29,8 +29,24 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
  * @param {number[]} nums
  * @return {number}
  */
-const majorityElement = function(nums) {
-    
+const majorityElement = function (nums) {
+    let countObj = {};
+    let majority = undefined;
+
+    for (let i = 0; i < nums.length; i++) {
+        const number = nums[i];
+
+        if (countObj[number] === undefined) {
+            countObj[number] = 1;
+        } else if (countObj[number] === nums.length / 2) {
+            majority = number;
+        } else {
+            countObj[number] += 1;
+        }
+        
+    }
+
+    return majority;
 };
 
 const nums = [2, 2, 1, 1, 1, 2, 2];

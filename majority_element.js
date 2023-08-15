@@ -31,15 +31,16 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
  */
 const majorityElement = function (nums) {
     let countObj = {};
-    let majority = undefined;
+    let majority = nums[0];
 
     for (let i = 0; i < nums.length; i++) {
         const number = nums[i];
 
         if (countObj[number] === undefined) {
             countObj[number] = 1;
-        } else if (countObj[number] === nums.length / 2) {
+        } else if (countObj[number] >= Math.floor(nums.length / 2)) {
             majority = number;
+            break;
         } else {
             countObj[number] += 1;
         }

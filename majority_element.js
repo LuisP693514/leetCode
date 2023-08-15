@@ -31,7 +31,7 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
  */
 const majorityElement = function (nums) {
     let countObj = {};
-    let majority;
+    let majority = nums[0];
 
     for (let i = 0; i < nums.length; i++) {
         const number = nums[i];

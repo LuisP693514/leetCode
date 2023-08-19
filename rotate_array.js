@@ -1,8 +1,6 @@
 /**
  * Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
 
- 
-
 Example 1:
 
 Input: nums = [1,2,3,4,5,6,7], k = 3
@@ -38,7 +36,21 @@ Could you do it in-place with O(1) extra space?
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-const rotate = function(nums, k) {
-    
+const rotate = function (nums, k) {
+    //if k is positive
+    if (k > 0) {
+        for (let i = 0; i < k; i++) {
+
+        }
+
+    // if k is negative
+    } else if (k < 0) {
+        k *= -1;
+        for (let i = 0; i < k; i++) {
+
+        }
+    } else {
+        // do nothing if k === 0;
+    }
 };
 

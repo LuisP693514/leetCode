@@ -42,15 +42,6 @@ const rotate = function (nums, k) {
         for (let i = 0; i < k; i++) {
             nums.unshift(nums.pop())
         }
-
-    // if k is negative
-    } else if (k < 0) {
-        k *= -1;
-        for (let i = 0; i < k; i++) {
-            nums.push(nums.shift())
-        }
-    } else {
-        // do nothing if k === 0;
     }
 };
 

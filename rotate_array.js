@@ -37,11 +37,23 @@ Could you do it in-place with O(1) extra space?
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 const rotate = function (nums, k) {
-    //if k is positive
-    if (k > 0) {
-        for (let i = 0; i < k; i++) {
-            nums.unshift(nums.pop())
+    let i = 0;
+    k %= nums.length;
+    n = nums.length;
+    if (k > n) return;
+    if (k === 0 || n === 0 || n === k) return;
+    if (k <= Math.round(n / 2)) {
+        while (i < k) {
+            nums.unshift(nums.pop());
+            i++;
         }
+        return;
+    } else {
+        while (i < n- k) {
+            nums.push(nums.shift());
+            i++;
+        }
+        return;
     }
 };
 

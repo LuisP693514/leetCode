@@ -60,8 +60,8 @@ const maxProfit = function (prices) {
         
         if (currentMax === 104 && currentMin === 0) {
             break;
-        }
-
+        }  
+        
         if (currentMax - currentMin > maxProfit) {
             maxProfit = currentMax - currentMin;
         }

@@ -51,6 +51,10 @@ const maxProfit = function (prices) {
         if (price < currentMin) {
             currentMin = price;
             minDay = i;
+            if (maxDay < i) {
+                maxDay = i;
+                currentMax = price;
+            }
         }
         
         if (currentMax === 104 && currentMin === 0) {

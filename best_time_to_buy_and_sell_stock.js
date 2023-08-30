@@ -44,10 +44,6 @@ const maxProfit = function (prices) {
     for (let i = 0; i < prices.length; i++) {
         const price = prices[i];
         
-        if (currentMax - currentMin > maxProfit) {
-            maxProfit = currentMax - currentMin;
-        }
-
         if (price > currentMax) {
             currentMax = price;
             maxDay = i;
@@ -65,11 +61,15 @@ const maxProfit = function (prices) {
         if (currentMax === 104 && currentMin === 0) {
             break;
         }
+
+        if (currentMax - currentMin > maxProfit) {
+            maxProfit = currentMax - currentMin;
+        }
     }
 
     return maxProfit;
     
 };
 
-const prices = [7, 1, 14, 0, 9, 3]; // => 9
+const prices = [1, 2]; // => 9
 console.log(maxProfit(prices));

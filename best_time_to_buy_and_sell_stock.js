@@ -54,6 +54,7 @@ const maxProfit = function (prices) {
             if (maxDay < i) {
                 maxDay = i;
                 currentMax = price;
+                // need to make it so that it tracks the highest difference
             }
         }
         

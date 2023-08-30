@@ -39,10 +39,15 @@ const maxProfit = function (prices) {
     let currentMin = prices[0];
     let maxDay = 0;
     let minDay = 0;
+    let maxProfit = 0;
     
     for (let i = 0; i < prices.length; i++) {
         const price = prices[i];
         
+        if (currentMax - currentMin > maxProfit) {
+            maxProfit = currentMax - currentMin;
+        }
+
         if (price > currentMax) {
             currentMax = price;
             maxDay = i;
@@ -54,7 +59,6 @@ const maxProfit = function (prices) {
             if (maxDay < i) {
                 maxDay = i;
                 currentMax = price;
-                // need to make it so that it tracks the highest difference
             }
         }
         
@@ -63,9 +67,9 @@ const maxProfit = function (prices) {
         }
     }
 
-    return prices[maxDay] - prices[minDay];
+    return maxProfit;
     
 };
 
-const prices = [7, 1, 5, 3, 6, 4]; // => 5
+const prices = [7, 1, 14, 0, 9, 3]; // => 9
 console.log(maxProfit(prices));

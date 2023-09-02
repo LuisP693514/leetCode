@@ -43,40 +43,44 @@ const maxProfit = function (prices) {
     
     let currentMax = prices[0];
     let currentMin = prices[0];
-    let maxDay = 0;
-    let minDay = 0;
-    let maxProfit = 0;
+    let currentMinUpdated = false;
     const arrayOfProfits = [];
+    let totalProfits = 0;
     
     for (let i = 0; i < prices.length; i++) {
         const price = prices[i];
 
-        if (price > currentMax) {
+        // if the current price is larger than before, update max
+
+        if (price > currentMax) currentMax = price;
+
+        // if the current price is smaller than previous while having a buy-in, sell the stock
+        // if the stock was just sold, make the current price the next buy in
+        // if the next price is smaller than the current one, sell on same day (profit = 0)
+        
+        if (price < currentMax) {
+            arrayOfProfits.push(currentMax - currentMin);
             currentMax = price;
-            maxDay = i;
-        }
-        
-        if (price < currentMin) {
             currentMin = price;
-            minDay = i;
-            if (maxDay < i) {
-                maxDay = i;
-                currentMax = price;
-            }
-        }
-        
-        if (currentMax === 104 && currentMin === 0) {
-            break;
+            currentMinUpdated = true;
         }
 
-        if (currentMax - currentMin > maxProfit) {
-            maxProfit = currentMax - currentMin;
+        // if we reach the end of the array without updating min price, max profit = prices[prices.length -1] - prices[0]
+
+        if ((currentMinUpdated || currentMin === prices[0] ) && i === prices.length - 1) {
+            arrayOfProfits.push(currentMax - currentMin);
         }
+
     }
-
-    return maxProfit;
+    // add up all the profits in the array
+    for (let i = 0; i < arrayOfProfits.length; i++) {
+        const profit = arrayOfProfits[i];
+        totalProfits += profit;
+    }
+    console.log(arrayOfProfits);
+    return totalProfits;
     
 };
 
-const prices = [7, 1, 14, 0, 9, 3]; // => 9
+const prices = [6, 1, 3, 2, 4, 7]; // => 7
 console.log(maxProfit(prices));

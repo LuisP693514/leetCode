@@ -37,6 +37,46 @@ Constraints:
  * @param {number[]} prices
  * @return {number}
  */
-const maxProfit = function(prices) {
+const maxProfit = function (prices) {
+    
+    if (prices.length === 0) return 0;
+    
+    let currentMax = prices[0];
+    let currentMin = prices[0];
+    let maxDay = 0;
+    let minDay = 0;
+    let maxProfit = 0;
+    const arrayOfProfits = [];
+    
+    for (let i = 0; i < prices.length; i++) {
+        const price = prices[i];
+
+        if (price > currentMax) {
+            currentMax = price;
+            maxDay = i;
+        }
+        
+        if (price < currentMin) {
+            currentMin = price;
+            minDay = i;
+            if (maxDay < i) {
+                maxDay = i;
+                currentMax = price;
+            }
+        }
+        
+        if (currentMax === 104 && currentMin === 0) {
+            break;
+        }
+
+        if (currentMax - currentMin > maxProfit) {
+            maxProfit = currentMax - currentMin;
+        }
+    }
+
+    return maxProfit;
     
 };
+
+const prices = [7, 1, 14, 0, 9, 3]; // => 9
+console.log(maxProfit(prices));
